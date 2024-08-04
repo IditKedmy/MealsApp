@@ -1,14 +1,23 @@
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 import {CATEGORIES} from "../data/dummy-data";
 import {FlatList, View, StyleSheet, Text} from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
 import Category from "../models/category";
 
-export default function CategoriesScreen() {
+export default function CategoriesScreen({navigation}: {navigation: any}) {
 
   function renderCategoryItem(itemData: { item: Category; }) {
+    const pressHandler = () => {
+      navigation.navigate('MealsOverview', {
+        categoryId: itemData.item.id,
+        title: itemData.item
+      });
+    }
+
     return (
-      <CategoryGridTile color={itemData.item.color} title={itemData.item.title} />
+      <CategoryGridTile
+        onPress={pressHandler}
+        color={itemData.item.color}
+        title={itemData.item.title} />
     );
   }
 

@@ -2,15 +2,16 @@ import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "rea
 import {TouchableOpacity, View, Text, StyleSheet, GestureResponderEvent, Pressable, Platform} from "react-native";
 
 type CategoryGridTileProps = {
-  // onSelect: ((event: GestureResponderEvent) => void) | undefined;
-  color: any;
+  onPress: ((event: GestureResponderEvent) => void) | undefined;
+  color: string;
   title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined;
 }
 
-export default function CategoryGridTile({title, color}: CategoryGridTileProps) {
+export default function CategoryGridTile({title, color, onPress}: CategoryGridTileProps) {
   return (
     <View style={[styles.gridItem, {backgroundColor: color}]}>
       <Pressable
+        onPress={onPress}
         android_ripple={{color: '#ccc'}}
         style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]}>
       {/*<TouchableOpacity style={{flex: 1}} >*/}
