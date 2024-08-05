@@ -1,8 +1,8 @@
 import {View, Text, StyleSheet, GestureResponderEvent, Pressable, Image, Platform} from "react-native";
-import Meal from "../models/meal";
+import Meal from "../../models/meal";
 import {NavigationProp, useNavigation} from "@react-navigation/native";
-import {RootStackParamList} from "../App";
-import MealDetails from "./MealDetails";
+import {RootStackParamList} from "../../App";
+import MealDetails from "../MealDetails";
 
 type MealItemProps = {
   item: Meal;
